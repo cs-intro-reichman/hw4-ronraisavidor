@@ -2,25 +2,19 @@ public class Primes {
     public static void main(String[] args) {
         // Replace this statement with your code
         int times = Integer.parseInt(args[0]);
-        primeDetails(primes(times));
-    }
-
-    public static void arrPrinter(boolean[]arr) {
-        for (int i=0; i<arr.length; i++) {
-            System.out.print(arr[i] + ", ");
-        }
+        primeDetails(primes(times), times);
     }
 
     public static boolean[] primes(int n) {
-        boolean[] arr = new boolean[n];
-        for (int i=2; i < n; i++) {
+        boolean[] arr = new boolean[n+1];
+        for (int i=2; i <= n; i++) {
             arr[i] = true;
         }
 
         int p = 2;
         while (p * p <= n) {
             if (arr[p]) {
-                for (int i=p*p; i < n; i+=p) {
+                for (int i=p*p; i <= n; i+=p) {
                     arr[i] = false;
                 }
             }
@@ -29,7 +23,7 @@ public class Primes {
         return arr;
     }
 
-    public static void primeDetails(boolean[]arr) {
+    public static void primeDetails(boolean[]arr, int n) {
         int countPrimes = 0;
         for (int i=2; i<arr.length; i++) {
             if (arr[i] == true) {
@@ -37,7 +31,9 @@ public class Primes {
                 countPrimes++;
             }
         }
-        double sum = ((double)countPrimes / arr.length) * 100;
-        System.out.printf("There are %d primes between 2 and %d (%.0f%% are primes) %n",countPrimes, arr.length, sum);
+        int totalNumbers = arr.length - 1;
+        double percentage = ((double) countPrimes / totalNumbers) * 100;
+        System.out.printf("Prime numbers up to %d:%n", n);
+        System.out.printf("There are %d primes between 2 and %d (%.0f%% are primes) %n",countPrimes, arr.length-1, percentage);
     }
 }
