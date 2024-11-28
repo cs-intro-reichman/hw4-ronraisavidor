@@ -24,6 +24,7 @@ public class Primes {
     }
 
     public static void primeDetails(boolean[]arr, int n) {
+        System.out.printf("Prime numbers up to %d:%n", n);
         int countPrimes = 0;
         for (int i=2; i<arr.length; i++) {
             if (arr[i] == true) {
@@ -33,7 +34,6 @@ public class Primes {
         }
         int totalNumbers = arr.length - 1;
         double percentage = ((double) countPrimes / totalNumbers) * 100;
-        System.out.printf("Prime numbers up to %d:%n", n);
         System.out.printf("There are %d primes between 2 and %d (%.0f%% are primes) %n",countPrimes, arr.length-1, percentage);
     }
 }
